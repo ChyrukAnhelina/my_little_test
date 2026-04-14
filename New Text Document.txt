@@ -1,0 +1,120 @@
+Ось повний перелік команд Git та терміналу з твоїх лабораторних робіт, які допоможуть тобі підготуватися до *kolokwium*. Усі команди структуровані за завданнями та адаптовані для зручного повторення.
+
+### Lab 3: Основи Git (Podstawy Git)
+
+[cite_start]**Zadanie 1[cite: 1]: Ініціалізація *repozytorium***
+[cite_start]Створення папки, ініціалізація, додавання файлу до *staging* (poczekalnia) та перший *commit* (zatwierdzenie)[cite: 2, 3, 4, 6, 7].
+```bash
+mkdir projekt
+cd projekt
+git init
+touch README.md
+git add README.md
+git commit -m "Initial commit"
+```
+
+[cite_start]**Zadanie 2[cite: 8]: Робота з файлами та історія**
+[cite_start]Створення файлу, перші коміти та перегляд історії (*historia commitów*)[cite: 9, 10, 11, 12, 13, 14].
+```bash
+touch app.py
+git add app.py
+git commit -m "Dodano app.py"
+git add app.py
+git commit -m "Nowa funkcja"
+git log
+```
+
+[cite_start]**Zadanie 3[cite: 15]: Виправлення коміту**
+[cite_start]Створення коміту з помилкою у повідомленні та його редагування за допомогою `--amend`[cite: 16, 17, 18, 19].
+```bash
+git add .
+git commit -m "błędna wiadomośćgit has"
+git commit --amend -m "Poprawna wiadomość"
+git log
+```
+
+[cite_start]**Zadanie 4[cite: 20]: Скасування коміту зі збереженням змін**
+[cite_start]Створення коміту та його скасування (soft reset), зберігаючи зміни у файлах (у *katalogu roboczym*)[cite: 21, 22, 23, 24].
+```bash
+git add .
+git commit -m "Test commit"
+git reset --soft HEAD~1
+git status
+```
+
+[cite_start]**Zadanie 5[cite: 25]: Безпечне скасування (Revert)**
+[cite_start]Коміт з помилкою та його скасування без видалення історії (tworzy nowy commit cofający)[cite: 26, 27, 28, 29].
+```bash
+git add .
+git commit -m "Błędna zmiana"
+git log
+git revert HEAD
+git log
+```
+
+---
+
+### Lab 5: Робота з гілками (Gałęzie - Branches)
+
+[cite_start]**Zadanie 1 та Zadanie 2[cite: 30, 38]: Створення гілки та робота в ній**
+[cite_start]Створення базового коміту на `main`, перехід на нову гілку `feature-test`, додавання файлів та перевірка історії[cite: 32, 33, 34, 35, 36, 37, 39, 40, 42, 43, 44].
+```bash
+git add README.md
+git commit -m "Init na main"
+git branch feature-test
+git checkout feature-test
+touch test.txt
+git add test.txt
+git commit -m "Dodano test.txt"
+touch notes.txt
+git add notes.txt
+git commit -m "Dodano notes.txt"
+git log
+```
+
+[cite_start]**Zadanie 3 та Zadanie 4[cite: 45, 52]: Перемикання (*przełączanie*) та множинні гілки**
+[cite_start]Повернення на `main`, створення нових гілок `feature-login` та `feature-register`, перевірка вмісту каталогу та списку гілок[cite: 46, 47, 48, 49, 50, 53, 54, 55, 56, 57, 58, 59].
+```bash
+git checkout main
+touch main.txt
+git add main.txt
+git commit -m "Main txt"
+ls
+git checkout feature-test
+ls
+git checkout -b feature-login
+touch login.txt
+git add login.txt
+git commit -m "Login"
+git checkout -b feature-register
+touch register.txt
+git add register.txt
+git commit -m "Register"
+git branch -a
+```
+
+[cite_start]**Zadanie 5[cite: 60]: Видалення гілки (*usuwanie brancha*)**
+[cite_start]Створення тимчасової гілки, перехід на `main`, видалення гілки та перевірка історії[cite: 61, 62, 63, 64, 65, 66, 67].
+```bash
+git checkout -b feature-temp
+touch temp.txt
+git add temp.txt
+git commit -m "Temp commit"
+git checkout main
+git branch -D feature-temp
+git branch
+git log --all --graph
+```
+
+---
+
+### Lab 4: Запуск та базові команди терміналу
+
+[cite_start]Ця лабораторна робота переважно описує структуру файлів README (Markdown) та перелік технологій для різних додатків (Simple Calculator, Todo Application, Student Management System тощо)[cite: 68, 69, 70, 83, 84, 95, 96, 98, 127]. [cite_start]Проте в інструкціях з інсталяції (*Installation*) наведено ключові команди терміналу для клонування та запуску[cite: 89, 92, 128, 131].
+
+[cite_start]**Клонування віддаленого *repozytorium* та запуск програми на Python[cite: 90, 91, 93, 129, 130, 132]:**
+```bash
+git clone https://github.com/example/todo-app.git
+cd todo-app
+python app.py
+```s
